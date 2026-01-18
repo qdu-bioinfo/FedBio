@@ -6,16 +6,12 @@
 - [Package requirement](#package-requirement)
 - [Installation environment](#installation-environment)
 - [Model training and testing](#model-training-and-testing)
-  - [a. Cohort-wise 5-fold split](#a-Cohort-wise 5-fold split)
-  - [b. Centralized (pooled) 5-fold split](#b-Centralized (pooled) 5-fold split)
-  - [c. FedBio (federated) model training ](#c-FedBio (federated) model training)
-  - [d. Benchmark: local training per client (non-federated)](#d-Benchmark: local training per client (non-federated))
-  - [e. Benchmark: centralized (pooled) setting](#e-Benchmark: centralized (pooled) setting)
-- [Example](#Example)
-    - [a. Running CTR vs. CRC analysis on WGS sequencing data.](#a-Running CTR vs. CRC analysis on WGS sequencing data.)
-    - [b. Running CTR vs. ADA analysis on WGS sequencing data.](#b-Running CTR vs. ADA analysis on WGS sequencing data.)
-    - [c. Running CTR vs. CRC analysis on 16S sequencing data.](#c-Running CTR vs. CRC analysis on 16S sequencing data.)
-    - [d. Running CTR vs. ADA analysis on 16S sequencing data.](#d-Running CTR vs. CRC analysis on 16S sequencing data.)
+  - [a. Cohort-wise 5-fold split](#a-Cohort-wise-5-fold-split)
+  - [b. Centralized 5-fold split](#b-Centralized-5-fold split)
+  - [c. FedBio model training](#c-FedBio-model-training)
+  - [d. Benchmark: local training per client](#d-Benchmark-local training-per-client)
+  - [e. Benchmark: centralized setting](#e-Benchmark-centralized-setting)
+- [Example](#Example)   
 
 ## Introduction
 
@@ -45,7 +41,7 @@ FedBio, a privacy-preserving federated learning framework that enables collabora
 * Please download the model from Hugging Face and place it into the following directory:↳
 
   ```
-  FedBio_master/distilbert-base-uncased/After downloading, the folder should contain files such as:
+  FedBio/distilbert-base-uncased/
   ```
 
   After downloading, the folder should contain files such as:
@@ -81,12 +77,12 @@ python GeneratorData_Central.py --data_type WGS --groups CTR_ADA
 python FedBio.py --data_type WGS --groups CTR_ADA --num_clients 9
 ```
 
-### d. Benchmark: local training per client (non-federated)
+### d. Benchmark: local training per client
 
 ```
 python BaseLine.py --data_type WGS --groups CTR_ADA --num_clients 9
 ```
-### e. Benchmark: centralized (pooled) setting
+### e. Benchmark: centralized setting
 
 ```
 python BaseLine_Central.py --data_type WGS --groups CTR_ADA --num_clients 9
@@ -96,22 +92,22 @@ python BaseLine_Central.py --data_type WGS --groups CTR_ADA --num_clients 9
 ### a. Running CTR vs. CRC analysis on WGS sequencing data.
 
 ```
-python TestFedBio.py --data_type WGS --groups CTR_CRC --num_clients 12 --model_dir "FedBio_master/Models/WGS/CTR_CRC"
+python TestFedBio.py --data_type WGS --groups CTR_CRC --num_clients 12 --model_dir "FedBio/Models/WGS/CTR_CRC"
 ```
 
 ### b. Running CTR vs. ADA analysis on WGS sequencing data.
 
 ```
-python TestFedBio.py --data_type WGS --groups CTR_ADA --num_clients 9 --model_dir "FedBio_master/Models/WGS/CTR_ADA"
+python TestFedBio.py --data_type WGS --groups CTR_ADA --num_clients 9 --model_dir "FedBio/Models/WGS/CTR_ADA"
 ```
 ### c. Running CTR vs. CRC analysis on 16S sequencing data.
 
 ```
-python TestFedBio.py --data_type 16S --groups CTR_CRC --num_clients 6 --model_dir "FedBio_master/Models/16S/CTR_CRC"
+python TestFedBio.py --data_type 16S --groups CTR_CRC --num_clients 6 --model_dir "FedBio/Models/16S/CTR_CRC"
 ```
 ### d. Running CTR vs. ADA analysis on 16S sequencing data.
 
 ```
-python TestFedBio.py --data_type 16S --groups CTR_ADA --num_clients 5 --model_dir "FedBio_master/Models/16S/CTR_ADA"
+python TestFedBio.py --data_type 16S --groups CTR_ADA --num_clients 5 --model_dir "FedBio/Models/16S/CTR_ADA"
 ```
 
